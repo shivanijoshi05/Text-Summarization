@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Text Summarizer</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.min.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+    </head>
+    
+    <body>
+      <div class="content">
+        <div class="container">
+          
+          <div class="row justify-content-center">
+            <div class="col-md-14">
+              
+              <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                  <div class="border-right pr-4 mb-6">
+                    <img src = "{{url_for('static', filename = 'img.jpg')}}" class ="img"/>
+                    <h3 class="mb-4">Text Summarizer</h3>
+                    <p>The process of producing summaries from the huge sets of information while maintaining the actual context.</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Automatic_summarization">Read more</a></p>
+                  </div>
+                </div>
+                <div class="col-lg-6 ml-auto">
+                  {% if summary == "" %}
+                    <h3 class="mb-5">Enter Your Text</h3>
+                    <form id="inputForm" method="post" enctype="multipart/form-data"  name="inputForm">
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <textarea class="form-control" name="inputText" id="inputText" cols="32" rows="10" placeholder="Write your text here"></textarea>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <h2 class='or-label'><span>OR</span></h2>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <div class="button-wrap">
+                            <label class="button" for="upload">Upload File</label>
+                            <input id="upload" for="upload" type="file" name="file" accept=".pdf"></input>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 mb-6">
+                          <input type="submit" value="Summarize Text" class="btn btn-primary rounded-0 py-2 px-4">
+                          <span class="submitting"></span>
+                        </div>
+                      </div>
+                    </form>
+                  {% endif %}
+                  {% if summary != "" %}
+                      <div class="output">
+                          <h3>Summary of your text:</h3>
+                          <p>{{summary}}</p>
+                      </div>
+                   {% endif %}
+                </div>
+              </div>
+            </div>  
+            </div>
+          </div>
+      </div>
+    
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.validate.min.js"></script>
+    <script src="static/js/main.js"></script>
+
+    </body>
+</html>
